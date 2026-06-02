@@ -33,7 +33,7 @@ class Base
         return $this;
     }
 
-    protected function error(string $errorMsg): false
+    protected function error(string $errorMsg): bool
     {
         $this->error = $errorMsg;
         return false;
