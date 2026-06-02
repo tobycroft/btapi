@@ -89,7 +89,6 @@ class Base
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
         $output = curl_exec($ch);
-        curl_close($ch);
 
         if ($output !== false) {
             if (is_array($output)) {
