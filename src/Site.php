@@ -24,6 +24,7 @@ final class Site extends Base
         'ToBackup' => '/site?action=ToBackup',
         'DelBackup' => '/site?action=DelBackup',
         'DomainList' => '/data?action=getData&table=domain',
+        'DomainListV2' => '/v2/data?action=getData&table=domain',
         'AddDomain' => '/site?action=AddDomain',
         'DelDomain' => '/site?action=DelDomain',
         'GetRewriteList' => '/site?action=GetRewriteList',
@@ -242,6 +243,16 @@ final class Site extends Base
         $data = ['search' => $id, 'list' => true];
         try {
             return $this->httpPostCookie($this->getUrl('DomainList'), $data);
+        } catch (Exception $e) {
+            return $this->error($e->getMessage());
+        }
+    }
+
+    public function getDomainListV2(mixed $search): mixed
+    {
+        $data = ['search' => $search];
+        try {
+            return $this->httpPostCookie($this->getUrl('DomainListV2'), $data);
         } catch (Exception $e) {
             return $this->error($e->getMessage());
         }
